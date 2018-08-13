@@ -1,0 +1,28 @@
+<script language="javascript">
+    function OpenWord() {//导出word
+        Layer1.style.border = 0;
+        ExcelSheet = new ActiveXObject('Word.Application');
+        ExcelSheet.Application.Visible = true;
+        var mydoc = ExcelSheet.Documents.Add('', 0, 0);
+        myRange = mydoc.Range(0, 1);
+        myRange = mydoc.Range(myRange.End - 1, myRange.End);//设定起始点
+        var sel = Layer1.document.body.createTextRange();
+        sel.moveToElementText(table1);
+        sel.select();
+        Layer1.document.execCommand('Copy');
+        sel.moveEnd('character');
+        myRange.Paste();
+
+        myRange = mydoc.Range(myRange.End - 1, myRange.End);
+        myRange.InsertAfter("\n");
+        ExcelSheet.ActiveWindow.View.TableGridlines = false;
+    }
+
+    function getTableValue() {
+        var table = document.all.item("NTKO_OCX").ActiveDocument.Tables(1);
+        table.Cell(1, 1).range.Text = "第一行第一列的值";
+        table.Cell(1, 2).range.Text = "第一行第二列的值";
+        table.Cell(1, 3).range.Text = "第一行第三列的值";
+        table.Cell(1, 4).range.Text = "第一行第四列的值";
+    }
+</script>

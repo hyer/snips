@@ -1,0 +1,10 @@
+# VOC 2007-2012
+    device: GTX1080，CUDA 7.5, cudnn 6.0; torch 0.2.0, python2.7
+
+    默认的train.py使用的网络：from darknet import Darknet （所以需要下载 `darknet19_448.conv.23`）
+    修改batch_size=32, 显存8015MB，内存4.9G
+    ```
+    2017-11-15 20:36:19 training with 49.393730 samples/s
+    2017-11-15 20:36:54 precision: 0.391904, recall: 0.283292, fscore: 0.328857  # 第一个epoch都是0，第二个epoch就到0.39了。
+    2017-11-15 20:36:54 epoch 2, processed 33102 samples, lr 0.001000
+    ```
